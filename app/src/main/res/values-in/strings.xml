@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hi_welcome_to_dicoding_story">Hai, Selamat Datang di Cerita Dicoding</string>
+    <string name="login_untuk_melanjutkan">Login untuk Melanjutkan!</string>
+    <string name="txt_ready">Siap untuk Membagikan Cerita Anda?</string>
+    <string name="email_hint">Masukkan Email Anda</string>
+    <string name="password_hint">Masukkan Password Anda</string>
+    <string name="login_now">Login Sekarang</string>
+    <string name="image_welcome">Gambar Selamat Datang</string>
+    <string name="daftar">Daftar</string>
+    <string name="txt_daftar">Belum Punya Akun? %1$s</string>
+    <string name="image_register">Gambar Daftar</string>
+    <string name="txt_daftar_now">Daftar Sekarang</string>
+    <string name="txt_login_ya">Sudah Punya Akun? %1$s</string>
+    <string name="image_story">Gambar Cerita</string>
+    <string name="reviewer_name">Nama Reviewer</string>
+    <string name="story_description">Deskripsi Cerita</string>
+    <string name="logout">Keluar</string>
+    <string name="diupload_pada">Diupload pada</string>
+    <string name="add_story">Tambah Cerita</string>
+    <string name="image_login">Gambar Masuk</string>
+    <string name="preview_image_story">Pratinjau Gambar Cerita</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="input_your_story_description">Masukkan Deskripsi Cerita Anda</string>
+    <string name="upload">Unggah</string>
+    <string name="capture_image">Tangkap Gambar</string>
+    <string name="switch_camera">Ubah Kamera</string>
+</resources>

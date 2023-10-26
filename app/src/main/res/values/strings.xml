@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name" translatable="false">MyStoryApp</string>
+    <string name="hi_welcome_to_dicoding_story">Hi, Welcome to Dicoding Story!</string>
+    <string name="login_untuk_melanjutkan">Login to Continue!</string>
+    <string name="txt_ready">Ready to Share Your Story?</string>
+    <string name="txt_email" translatable="false">Email</string>
+    <string name="email_hint">Input Your Email</string>
+    <string name="txt_password" translatable="false">Password</string>
+    <string name="password_hint">Input Your Password</string>
+    <string name="login_now">Login Now</string>
+    <string name="txt_login" translatable="false">Login</string>
+    <string name="image_welcome">Image Welcome</string>
+    <string name="txt_descripiton" translatable="false">Bagikan cerita pengalaman anda saat belajar di Dicoding. Apakah itu Senang? Kesal? Kesulitan? Ceritakan semua yang ingin anda ceritakan!</string>
+    <string name="daftar">Register</string>
+    <string name="splash_screen" translatable="false">Splash Screen</string>
+    <string name="txt_daftar">Don\'t Have Account? %1$s</string>
+    <string name="image_register">Image Register</string>
+    <string name="txt_lengkapi_data_diri" translatable="false">Lengkapi data dirimu untuk mendaftar!</string>
+    <string name="txt_name" translatable="false">Nama</string>
+    <string name="txt_daftar_now">Register Now</string>
+    <string name="txt_login_ya">Have Account? %1$s</string>
+    <string name="image_story">Image Story</string>
+    <string name="reviewer_name">Reviewer Name</string>
+    <string name="story_description">Story Description</string>
+    <string name="logout">Logout</string>
+    <string name="main_menu" translatable="false">Main Menu</string>
+    <string name="diupload_pada">Uploaded at</string>
+    <string name="add_story">Add Story</string>
+    <string name="image_login">Image Login</string>
+    <string name="preview_image_story">Preview Image Story</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="input_your_story_description">Input Your Story Description</string>
+    <string name="upload">Upload</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="switch_camera">Switch Camera</string>
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:paddingBottom="30dp"
+    tools:context=".ui.view.WelcomeActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_welcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:alpha="0"
+            android:contentDescription="@string/image_welcome"
+            android:src="@drawable/img_welcome"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.363"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.294"
+            tools:alpha="100" />
+
+        <TextView
+            android:id="@+id/txt_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:alpha="0"
+            android:text="@string/hi_welcome_to_dicoding_story"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/img_welcome"
+            app:layout_constraintTop_toBottomOf="@+id/img_welcome"
+            tools:alpha="100" />
+
+        <TextView
+            android:id="@+id/txt_description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:alpha="0"
+            android:text="@string/txt_descripiton"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/img_welcome"
+            app:layout_constraintTop_toBottomOf="@+id/txt_welcome"
+            tools:alpha="100" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:alpha="0"
+            android:text="@string/txt_login"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+            app:layout_constraintStart_toStartOf="@+id/img_welcome"
+            app:layout_constraintTop_toBottomOf="@+id/txt_description"
+            tools:alpha="100" />
+
+        <Button
+            android:id="@+id/btn_daftar"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:alpha="0"
+            android:text="@string/daftar"
+            app:layout_constraintEnd_toEndOf="@+id/img_welcome"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+            app:layout_constraintTop_toBottomOf="@+id/txt_description"
+            tools:alpha="100" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
