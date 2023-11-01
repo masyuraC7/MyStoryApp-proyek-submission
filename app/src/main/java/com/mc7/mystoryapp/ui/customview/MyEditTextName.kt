@@ -34,7 +34,6 @@ class MyEditTextName : AppCompatEditText {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = "Masukkan Nama Anda"
 
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }

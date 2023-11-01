@@ -78,8 +78,6 @@ class LoginActivity : AppCompatActivity() {
                 when (result) {
                     is Result.Loading -> {
                         viewModel.isLoading(true)
-                        viewModel.isError(null)
-                        viewModel.isSuccess(null)
                     }
 
                     is Result.Success -> {
@@ -128,7 +126,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setDaftarBtn(){
-        val ss = SpannableString(getString(R.string.txt_daftar, "Daftar Sekarang!"))
+        val ss = SpannableString(getString(R.string.txt_daftar, "Register Now!"))
         val clickableSpan: ClickableSpan = object : ClickableSpan() {
             override fun onClick(textView: View) {
                 val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -153,7 +151,7 @@ class LoginActivity : AppCompatActivity() {
                 ds.isUnderlineText = false
             }
         }
-        ss.setSpan(clickableSpan, 18, 34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ss.setSpan(clickableSpan, 21, 33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.txtDaftar.text = ss
         binding.txtDaftar.movementMethod = LinkMovementMethod.getInstance()

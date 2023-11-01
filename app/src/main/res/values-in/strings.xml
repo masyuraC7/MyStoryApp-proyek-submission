@@ -8,10 +8,8 @@
     <string name="login_now">Login Sekarang</string>
     <string name="image_welcome">Gambar Selamat Datang</string>
     <string name="daftar">Daftar</string>
-    <string name="txt_daftar">Belum Punya Akun? %1$s</string>
     <string name="image_register">Gambar Daftar</string>
     <string name="txt_daftar_now">Daftar Sekarang</string>
-    <string name="txt_login_ya">Sudah Punya Akun? %1$s</string>
     <string name="image_story">Gambar Cerita</string>
     <string name="reviewer_name">Nama Reviewer</string>
     <string name="story_description">Deskripsi Cerita</string>
@@ -26,4 +24,5 @@
     <string name="upload">Unggah</string>
     <string name="capture_image">Tangkap Gambar</string>
     <string name="switch_camera">Ubah Kamera</string>
+    <string name="input_your_name">Masukkan Nama Anda</string>
 </resources>

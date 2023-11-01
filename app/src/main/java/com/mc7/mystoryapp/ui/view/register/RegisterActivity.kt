@@ -117,7 +117,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setLoginBtn() {
-        val ss = SpannableString(getString(R.string.txt_login_ya, "Login Sekarang!"))
+        val ss = SpannableString(getString(R.string.txt_login_ya, "Login Now!"))
         val clickableSpan: ClickableSpan = object : ClickableSpan() {
             override fun onClick(textView: View) {
                 val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -144,7 +144,7 @@ class RegisterActivity : AppCompatActivity() {
                 ds.isUnderlineText = false
             }
         }
-        ss.setSpan(clickableSpan, 18, 33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        ss.setSpan(clickableSpan, 15, 24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.txtLogin.text = ss
         binding.txtLogin.movementMethod = LinkMovementMethod.getInstance()

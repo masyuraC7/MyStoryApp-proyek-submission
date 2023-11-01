@@ -13,12 +13,12 @@
     <string name="txt_descripiton" translatable="false">Bagikan cerita pengalaman anda saat belajar di Dicoding. Apakah itu Senang? Kesal? Kesulitan? Ceritakan semua yang ingin anda ceritakan!</string>
     <string name="daftar">Register</string>
     <string name="splash_screen" translatable="false">Splash Screen</string>
-    <string name="txt_daftar">Don\'t Have Account? %1$s</string>
+    <string name="txt_daftar" translatable="false">Don\'t Have Account? %1$s</string>
     <string name="image_register">Image Register</string>
     <string name="txt_lengkapi_data_diri" translatable="false">Lengkapi data dirimu untuk mendaftar!</string>
     <string name="txt_name" translatable="false">Nama</string>
     <string name="txt_daftar_now">Register Now</string>
-    <string name="txt_login_ya">Have Account? %1$s</string>
+    <string name="txt_login_ya" translatable="false">Have Account? %1$s</string>
     <string name="image_story">Image Story</string>
     <string name="reviewer_name">Reviewer Name</string>
     <string name="story_description">Story Description</string>
@@ -34,4 +34,5 @@
     <string name="upload">Upload</string>
     <string name="capture_image">Capture Image</string>
     <string name="switch_camera">Switch Camera</string>
+    <string name="input_your_name">Input Your Name</string>
 </resources>
