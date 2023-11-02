@@ -40,4 +40,7 @@
     <string name="try_again">Try Again</string>
     <string name="upload_with_my_location">Upload With My Location</string>
     <string name="confirm_logout">Are you really want to logout?</string>
+    <string name="error_min_4_char">Input min 4 character!</string>
+    <string name="error_email">Input the right email!</string>
+    <string name="error_password_8">Input password min 8 character</string>
 </resources>

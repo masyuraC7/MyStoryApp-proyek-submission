@@ -141,7 +141,8 @@ class LoginActivity : AppCompatActivity() {
                     Pair(binding.txtDaftar, "tvDaftar"),
                 )
 
-                val intentToRegisterActivity = Intent(this@LoginActivity, RegisterActivity::class.java)
+                val intentToRegisterActivity =
+                    Intent(this@LoginActivity, RegisterActivity::class.java)
                 startActivity(intentToRegisterActivity, optionsCompat.toBundle())
             }
 
@@ -160,8 +161,10 @@ class LoginActivity : AppCompatActivity() {
 
     @SuppressLint("Recycle")
     private fun playAnimation() {
+        val movingImg: Long = 6000
+
         ObjectAnimator.ofFloat(binding.imgLogin, View.TRANSLATION_X, -30f, 30f).apply {
-            duration = 6000
+            duration = movingImg
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }.start()

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.room.Room
+import com.mc7.mystoryapp.BuildConfig
 import com.mc7.mystoryapp.data.StoryPreference
 import com.mc7.mystoryapp.data.StoryRepository
 import com.mc7.mystoryapp.data.StoryRepositoryImpl
@@ -40,8 +41,11 @@ object AppModule {
             preference.getUserToken().first()
         }
 
-        val loggingInterceptor = HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BODY)
+        val loggingInterceptor = if(BuildConfig.DEBUG) {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        } else {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        }
 
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()

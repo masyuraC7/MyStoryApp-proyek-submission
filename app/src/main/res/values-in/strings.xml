@@ -29,4 +29,7 @@
     <string name="try_again">Try Again</string>
     <string name="upload_with_my_location">Unggah dengan lokasi saya</string>
     <string name="confirm_logout">Apakah anda yakin ingin logout?</string>
+    <string name="error_min_4_char">Masukkan minimal 4 karakter!</string>
+    <string name="error_email">Masukkan format Email dengan benar!</string>
+    <string name="error_password_8">Password tidak boleh kurang dari 8 karakter</string>
 </resources>

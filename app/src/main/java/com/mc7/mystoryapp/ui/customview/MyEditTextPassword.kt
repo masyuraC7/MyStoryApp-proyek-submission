@@ -3,14 +3,13 @@ package com.mc7.mystoryapp.ui.customview
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
-import android.text.Editable
-import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.mc7.mystoryapp.R
 
 class MyEditTextPassword : AppCompatEditText, View.OnTouchListener {
@@ -74,21 +73,14 @@ class MyEditTextPassword : AppCompatEditText, View.OnTouchListener {
         // Menambahkan aksi kepada eye button
         setOnTouchListener(this)
 
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) =
-                Unit
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.toString().length < 8) {
-                    background = falseBackground
-                    setError("Password tidak boleh kurang dari 8 karakter", null)
-                } else {
-                    background = trueBackground
-                    error = null
-                }
+        addTextChangedListener(onTextChanged = {s, _, _, _ ->
+            if (s.toString().length < 8) {
+                background = falseBackground
+                setError(context.getString(R.string.error_password_8), null)
+            } else {
+                background = trueBackground
+                error = null
             }
-
-            override fun afterTextChanged(s: Editable) = Unit
         })
     }
 

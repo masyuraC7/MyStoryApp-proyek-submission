@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.mc7.mystoryapp.R
 
 class MyEditTextName : AppCompatEditText {
@@ -58,21 +59,14 @@ class MyEditTextName : AppCompatEditText {
         //show icon/img btn
         setButtonDrawables()
 
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) =
-                Unit
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.toString().length >= 4){
-                    background = trueBackground
-                    error = null
-                }else{
-                    background = falseBackground
-                    error = "Masukkan minimal 4 karakter!"
-                }
+        addTextChangedListener(onTextChanged = {s, _, _, _ ->
+            if (s.toString().length >= 4){
+                background = trueBackground
+                error = null
+            }else{
+                background = falseBackground
+                error = context.getString(R.string.error_min_4_char)
             }
-
-            override fun afterTextChanged(s: Editable) = Unit
         })
     }
 
