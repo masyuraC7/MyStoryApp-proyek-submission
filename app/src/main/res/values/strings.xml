@@ -38,4 +38,6 @@
     <string name="google_maps">Google Maps</string>
     <string name="title_activity_maps" translatable="false">MapsActivity</string>
     <string name="try_again">Try Again</string>
+    <string name="upload_with_my_location">Upload With My Location</string>
+    <string name="confirm_logout">Are you really want to logout?</string>
 </resources>

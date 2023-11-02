@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     private fun showLogout() {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
 
-        alert.setTitle("Apakah anda yakin ingin logout?")
+        alert.setTitle(R.string.confirm_logout)
 
         alert.setPositiveButton("Logout") { _, _ ->
             authViewModel.deleteUserToken()

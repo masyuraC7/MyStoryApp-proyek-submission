@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.mc7.mystoryapp.R
 import com.mc7.mystoryapp.databinding.ActivityAddStoryBinding
 import com.mc7.mystoryapp.ui.view.main.MainActivity
@@ -33,6 +36,9 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class AddStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddStoryBinding
     private var currentImageUri: Uri? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var lat: Float? = null
+    private var lon: Float? = null
     private val viewModel: AddStoryViewModel by viewModels()
 
     private val launcherGallery = registerForActivityResult(
@@ -92,6 +98,14 @@ class AddStoryActivity : AppCompatActivity() {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        binding.withMyLocation.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                getMyLocation()
+            }
+        }
+
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
@@ -117,6 +131,28 @@ class AddStoryActivity : AppCompatActivity() {
         }
     }
 
+    private fun getMyLocation() {
+        if (ContextCompat.checkSelfPermission(
+                this.applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    if (location != null) {
+                        lat = location.latitude.toFloat()
+                        lon = location.longitude.toFloat()
+
+                        Log.d("UploadStory", "$lat + $lon")
+                    } else {
+                        showAlert("Location is not found. Try Again", false)
+                    }
+                }
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun uploadImage() {
         currentImageUri?.let { uri ->
@@ -137,7 +173,7 @@ class AddStoryActivity : AppCompatActivity() {
                     requestImageFile
                 )
 
-            viewModel.uploadStory(multipartBody, requestBody)
+            viewModel.uploadStory(multipartBody, requestBody, lat, lon)
                 .observe(this@AddStoryActivity) { result ->
                     when (result) {
                         is Result.Loading -> {
@@ -160,7 +196,8 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
     private fun showToast() {
-        Toast.makeText(this@AddStoryActivity, "Tidak ada gambar yang dipilih", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@AddStoryActivity, "Tidak ada gambar yang dipilih", Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun showLoading(isLoading: Boolean) {

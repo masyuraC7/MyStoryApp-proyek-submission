@@ -27,4 +27,6 @@
     <string name="input_your_name">Masukkan Nama Anda</string>
     <string name="google_maps">Google Maps</string>
     <string name="try_again">Try Again</string>
+    <string name="upload_with_my_location">Unggah dengan lokasi saya</string>
+    <string name="confirm_logout">Apakah anda yakin ingin logout?</string>
 </resources>

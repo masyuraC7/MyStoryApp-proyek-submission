@@ -34,6 +34,11 @@ class AddStoryViewModel @Inject constructor(
         _isError.value = isErrorYa
     }
 
-    fun uploadStory(multipartBody: MultipartBody.Part, requestBody: RequestBody) =
-        repository.uploadStory(multipartBody, requestBody)
+    fun uploadStory(
+        multipartBody: MultipartBody.Part,
+        requestBody: RequestBody,
+        lat: Float?,
+        lon: Float?
+    ) =
+        repository.uploadStory(multipartBody, requestBody, lat, lon)
 }

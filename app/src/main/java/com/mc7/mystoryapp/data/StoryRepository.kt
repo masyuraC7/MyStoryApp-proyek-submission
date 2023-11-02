@@ -24,6 +24,10 @@ interface StoryRepository {
 
     fun getDetailStory(id: String): LiveData<Result<DetailStoryResponse>>
 
-    fun uploadStory(multipartBody: MultipartBody.Part, requestBody: RequestBody):
-            LiveData<Result<ErrorResponse>>
+    fun uploadStory(
+        multipartBody: MultipartBody.Part,
+        requestBody: RequestBody,
+        lat: Float?,
+        lon: Float?
+    ): LiveData<Result<ErrorResponse>>
 }

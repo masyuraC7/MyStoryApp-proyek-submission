@@ -50,8 +50,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             btnLogin.setOnClickListener {
-                val email = edtEmail.text.toString()
-                val password = edtPass.text.toString()
+                val email = edtEmailLogin.text.toString()
+                val password = edtPassLogin.text.toString()
 
                 loginUser(email, password)
             }
@@ -135,9 +135,9 @@ class LoginActivity : AppCompatActivity() {
                     Pair(binding.txtWelcome, "tvWelcome"),
                     Pair(binding.txtTitleLogin, "tvTitle"),
                     Pair(binding.txtEmail, "tvEmail"),
-                    Pair(binding.edtEmail, "edtEmail"),
+                    Pair(binding.edtEmailLogin, "edtEmail"),
                     Pair(binding.txtPass, "tvPass"),
-                    Pair(binding.edtPass, "edtPass"),
+                    Pair(binding.edtPassLogin, "edtPass"),
                     Pair(binding.txtDaftar, "tvDaftar"),
                 )
 

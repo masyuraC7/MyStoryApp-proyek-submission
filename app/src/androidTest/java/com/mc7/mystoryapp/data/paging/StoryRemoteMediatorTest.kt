@@ -110,7 +110,9 @@ class FakeApiService : ApiService {
 
     override suspend fun uploadStory(
         file: MultipartBody.Part,
-        description: RequestBody
+        description: RequestBody,
+        lat: Float?,
+        lon: Float?
     ): ErrorResponse {
         return ErrorResponse()
     }

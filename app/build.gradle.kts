@@ -61,6 +61,7 @@ dependencies {
     // google maps
     //noinspection GradleDependency
     implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 
     // retrofit
     val retrofit = "2.9.0"
@@ -115,17 +116,26 @@ dependencies {
     //noinspection GradleDependency
     ksp("androidx.room:room-compiler:$room")
 
-    // pagging
+    // paging
     //noinspection GradleDependency
     implementation("androidx.paging:paging-runtime-ktx:3.1.0")
 
     // testing
+    // InstantTaskExecutorRule
     //noinspection GradleDependency
-    testImplementation("androidx.arch.core:core-testing:2.1.0") // InstantTaskExecutorRule
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1") //TestDispatcher
-    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1") //TestDispatcher
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    //TestDispatcher Unit
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+    //TestDispatcher UI
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
     //noinspection GradleDependency
     testImplementation("org.mockito:mockito-core:3.12.4")
     //noinspection GradleDependency
     testImplementation("org.mockito:mockito-inline:3.12.4")
+
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:rules:1.5.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
+    implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
 }

@@ -52,5 +52,7 @@ interface ApiService {
     suspend fun uploadStory(
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
+        @Part("lat") lat: Float? = null,
+        @Part("lon") lon: Float? = null
     ): ErrorResponse
 }

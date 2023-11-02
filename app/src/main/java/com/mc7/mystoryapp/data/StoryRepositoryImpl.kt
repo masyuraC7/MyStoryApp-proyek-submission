@@ -87,11 +87,18 @@ class StoryRepositoryImpl @Inject constructor(
 
     override fun uploadStory(
         multipartBody: MultipartBody.Part,
-        requestBody: RequestBody
+        requestBody: RequestBody,
+        lat: Float?,
+        lon: Float?
     ): LiveData<Result<ErrorResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.uploadStory(multipartBody, requestBody)
+            val response = apiService.uploadStory(
+                multipartBody,
+                requestBody,
+                lat,
+                lon
+            )
 
             emit(Result.Success(response))
         } catch (e: HttpException) {

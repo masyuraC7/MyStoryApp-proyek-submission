@@ -30,7 +30,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         playAnimation()
 
-        binding.btnLogin.setOnClickListener {
+        binding.btnToLogin.setOnClickListener {
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                    this@WelcomeActivity
                 ).toBundle()
@@ -39,7 +39,7 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(intentToLoginActivity, optionsCompat)
         }
 
-        binding.btnDaftar.setOnClickListener {
+        binding.btnToDaftar.setOnClickListener {
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this@WelcomeActivity
             ).toBundle()
@@ -69,8 +69,8 @@ class WelcomeActivity : AppCompatActivity() {
         val imgWelcome = ObjectAnimator.ofFloat(binding.imgWelcome, View.ALPHA, 1f).setDuration(300)
         val tvTitle = ObjectAnimator.ofFloat(binding.txtWelcome, View.ALPHA, 1f).setDuration(300)
         val tvDesc = ObjectAnimator.ofFloat(binding.txtDescription, View.ALPHA, 1f).setDuration(300)
-        val btnDaftar = ObjectAnimator.ofFloat(binding.btnDaftar, View.ALPHA, 1f).setDuration(300)
-        val btnLogin = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(300)
+        val btnDaftar = ObjectAnimator.ofFloat(binding.btnToDaftar, View.ALPHA, 1f).setDuration(300)
+        val btnLogin = ObjectAnimator.ofFloat(binding.btnToLogin, View.ALPHA, 1f).setDuration(300)
 
         val togetherBtn = AnimatorSet().apply {
             playTogether(btnLogin, btnDaftar)
