@@ -25,4 +25,6 @@
     <string name="capture_image">Tangkap Gambar</string>
     <string name="switch_camera">Ubah Kamera</string>
     <string name="input_your_name">Masukkan Nama Anda</string>
+    <string name="google_maps">Google Maps</string>
+    <string name="try_again">Try Again</string>
 </resources>

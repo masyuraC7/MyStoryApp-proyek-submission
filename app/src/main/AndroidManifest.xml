@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- cameraX permission -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- cameraX permission -->
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".utils.MyApp"
@@ -19,6 +20,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyStoryApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCJq25sssGOeW_S7nPQ5GM4akaY7WHDLn0" />
+
+        <activity
+            android:name=".ui.view.maps.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".ui.view.addstory.CameraXActivity"
             android:exported="false" />

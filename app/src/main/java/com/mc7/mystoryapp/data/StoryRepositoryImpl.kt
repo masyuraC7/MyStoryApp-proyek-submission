@@ -2,11 +2,19 @@ package com.mc7.mystoryapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.google.gson.Gson
+import com.mc7.mystoryapp.data.local.room.database.StoryDatabase
+import com.mc7.mystoryapp.data.paging.StoryRemoteMediator
 import com.mc7.mystoryapp.data.remote.response.DetailStoryResponse
-import com.mc7.mystoryapp.data.remote.response.LoginResponse
 import com.mc7.mystoryapp.data.remote.response.ErrorResponse
+import com.mc7.mystoryapp.data.remote.response.LoginResponse
 import com.mc7.mystoryapp.data.remote.response.StoriesResponse
+import com.mc7.mystoryapp.data.remote.response.StoryItem
 import com.mc7.mystoryapp.data.remote.retrofit.ApiService
 import com.mc7.mystoryapp.utils.Result
 import okhttp3.MultipartBody
@@ -15,7 +23,8 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 class StoryRepositoryImpl @Inject constructor(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val storyDatabase: StoryDatabase
 ) : StoryRepository {
 
     override fun registerUser(
@@ -25,7 +34,7 @@ class StoryRepositoryImpl @Inject constructor(
         try {
             val response = apiService.registerUser(name, email, password)
             emit(Result.Success(response))
-        }catch (e: Exception){
+        } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
     }
@@ -36,18 +45,31 @@ class StoryRepositoryImpl @Inject constructor(
             try {
                 val response = apiService.loginUser(email, password)
                 emit(Result.Success(response))
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 emit(Result.Error(e.message.toString()))
             }
         }
 
-    override fun getStories(): LiveData<Result<StoriesResponse>> =
+    @OptIn(ExperimentalPagingApi::class)
+    override fun getStories(): LiveData<PagingData<StoryItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5,
+            ),
+            remoteMediator = StoryRemoteMediator(apiService, storyDatabase),
+            pagingSourceFactory = {
+                storyDatabase.storyDao().getStories()
+            }
+        ).liveData
+    }
+
+    override fun getStoriesWithLocation(): LiveData<Result<StoriesResponse>> =
         liveData {
             emit(Result.Loading)
             try {
-                val response = apiService.getStories()
+                val response = apiService.getStoriesWithLocation()
                 emit(Result.Success(response))
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 emit(Result.Error(e.message.toString()))
             }
         }
@@ -58,7 +80,7 @@ class StoryRepositoryImpl @Inject constructor(
             try {
                 val response = apiService.getDetailStory(id)
                 emit(Result.Success(response))
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 emit(Result.Error(e.message.toString()))
             }
         }

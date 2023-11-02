@@ -5,16 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mc7.mystoryapp.R
 import com.mc7.mystoryapp.databinding.ActivityMainBinding
-import com.mc7.mystoryapp.ui.view.addstory.AddStoryActivity
 import com.mc7.mystoryapp.ui.view.WelcomeActivity
+import com.mc7.mystoryapp.ui.view.addstory.AddStoryActivity
 import com.mc7.mystoryapp.ui.view.login.AuthViewModel
+import com.mc7.mystoryapp.ui.view.maps.MapsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,18 +33,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.rvStory.layoutManager = LinearLayoutManager(this)
         val listAdapter = ListStoryAdapter()
-        binding.rvStory.adapter = listAdapter
+        binding.rvStory.adapter = listAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter{
+                listAdapter.retry()
+            }
+        )
 
-        viewModel.isFillStories.observe(this) { items ->
-            listAdapter.submitList(items)
-        }
-
-        viewModel.isLoading.observe(this) {
-            showLoading(it)
-        }
-
-        viewModel.isError.observe(this) {
-            showError(it)
+        viewModel.storyItems.observe(this) { items ->
+            listAdapter.submitData(lifecycle, items)
         }
 
         binding.fabAddStory.setOnClickListener {
@@ -59,23 +55,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
-    private fun showError(isError: String?) {
-        binding.tvErrorMessage.visibility = if (isError != null) View.VISIBLE else View.GONE
-
-        binding.tvErrorMessage.text = isError
-    }
-
-    private fun showAlert(message: String) {
+    private fun showLogout() {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
 
-        alert.setTitle(message)
+        alert.setTitle("Apakah anda yakin ingin logout?")
 
         alert.setPositiveButton("Logout") { _, _ ->
-            authViewModel.saveUserToken("nothing")
+            authViewModel.deleteUserToken()
 
             val intentToWelcomeActivity =
                 Intent(this@MainActivity, WelcomeActivity::class.java)
@@ -100,7 +86,12 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId) {
             R.id.action_logout -> {
-                showAlert("Apakah anda yakin ingin logout?")
+                showLogout()
+            }
+
+            R.id.action_map -> {
+                val intentToMapsActivity = Intent(this@MainActivity, MapsActivity::class.java)
+                startActivity(intentToMapsActivity)
             }
         }
 

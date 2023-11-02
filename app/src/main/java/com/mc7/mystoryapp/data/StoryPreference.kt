@@ -16,7 +16,7 @@ class StoryPreference @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
 
-    private val userToken = stringPreferencesKey("token")
+    private val userToken = stringPreferencesKey("userToken")
 
     fun getUserToken(): Flow<String> {
         return dataStore.data.map { preferences ->
@@ -27,6 +27,12 @@ class StoryPreference @Inject constructor(
     suspend fun saveUserToken(token: String) {
         dataStore.edit { preferences ->
             preferences[userToken] = token
+        }
+    }
+
+    suspend fun deleteUserToken() {
+        dataStore.edit { preferences ->
+            preferences.clear()
         }
     }
 }

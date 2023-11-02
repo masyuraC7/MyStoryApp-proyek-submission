@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mc7.mystoryapp.data.remote.response.StoryItem
@@ -16,7 +16,8 @@ import com.mc7.mystoryapp.databinding.ItemListStoryBinding
 import com.mc7.mystoryapp.ui.view.detail.DetailStoryActivity
 import com.mc7.mystoryapp.utils.DateFormatter
 
-class ListStoryAdapter: ListAdapter<StoryItem, ListStoryAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class ListStoryAdapter :
+    PagingDataAdapter<StoryItem, ListStoryAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemListStoryBinding.inflate(
@@ -28,7 +29,9 @@ class ListStoryAdapter: ListAdapter<StoryItem, ListStoryAdapter.MyViewHolder>(DI
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user = getItem(position)
-        holder.bind(user)
+        if (user != null) {
+            holder.bind(user)
+        }
         holder.itemView.setOnClickListener {
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 holder.itemView.context as Activity,
@@ -40,7 +43,7 @@ class ListStoryAdapter: ListAdapter<StoryItem, ListStoryAdapter.MyViewHolder>(DI
 
             val intentToDetailActivity =
                 Intent(holder.itemView.context, DetailStoryActivity::class.java)
-            intentToDetailActivity.putExtra("extra_id", user.id)
+            intentToDetailActivity.putExtra("extra_id", user?.id)
             holder.itemView.context.startActivity(intentToDetailActivity, optionsCompat)
         }
     }

@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -40,6 +41,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 }
 
@@ -52,8 +54,13 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // google maps
+    //noinspection GradleDependency
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
 
     // retrofit
     val retrofit = "2.9.0"
@@ -82,6 +89,7 @@ dependencies {
 
     // android ktx
     implementation("androidx.fragment:fragment-ktx:1.6.1")
+    //noinspection GradleDependency
     implementation("androidx.activity:activity-ktx:1.7.2")
 
     // glide img
@@ -89,7 +97,35 @@ dependencies {
 
     //camera x
     val cameraxVersion = "1.2.3"
+    //noinspection GradleDependency
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    //noinspection GradleDependency
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    //noinspection GradleDependency
     implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    // room
+    val room = "2.5.2"
+    //noinspection GradleDependency
+    implementation("androidx.room:room-ktx:$room")
+    //noinspection GradleDependency
+    implementation("androidx.room:room-runtime:$room")
+    //noinspection GradleDependency
+    implementation("androidx.room:room-paging:$room")
+    //noinspection GradleDependency
+    ksp("androidx.room:room-compiler:$room")
+
+    // pagging
+    //noinspection GradleDependency
+    implementation("androidx.paging:paging-runtime-ktx:3.1.0")
+
+    // testing
+    //noinspection GradleDependency
+    testImplementation("androidx.arch.core:core-testing:2.1.0") // InstantTaskExecutorRule
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1") //TestDispatcher
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1") //TestDispatcher
+    //noinspection GradleDependency
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    //noinspection GradleDependency
+    testImplementation("org.mockito:mockito-inline:3.12.4")
 }

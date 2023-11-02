@@ -3,10 +3,13 @@ package com.mc7.mystoryapp.data.di
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.room.Room
 import com.mc7.mystoryapp.data.StoryPreference
 import com.mc7.mystoryapp.data.StoryRepository
 import com.mc7.mystoryapp.data.StoryRepositoryImpl
 import com.mc7.mystoryapp.data.dataStore
+import com.mc7.mystoryapp.data.local.room.dao.StoryDao
+import com.mc7.mystoryapp.data.local.room.database.StoryDatabase
 import com.mc7.mystoryapp.data.remote.retrofit.ApiService
 import com.mc7.mystoryapp.utils.MyApp
 import dagger.Module
@@ -69,8 +72,25 @@ object AppModule {
     }
 
     @Provides
-    fun provideStoryRepository(apiService: ApiService): StoryRepository {
-        return StoryRepositoryImpl(apiService)
+    fun provideStoryDatabase(appContext: MyApp): StoryDatabase {
+        return Room.databaseBuilder(
+            appContext,
+            StoryDatabase::class.java, "story.db"
+        )
+            .build()
+    }
+
+    @Provides
+    fun provideStoryDao(storyDatabase: StoryDatabase): StoryDao {
+        return storyDatabase.storyDao()
+    }
+
+    @Provides
+    fun provideStoryRepository(
+        apiService: ApiService,
+        storyDatabase: StoryDatabase
+    ): StoryRepository {
+        return StoryRepositoryImpl(apiService, storyDatabase)
     }
 
     @Provides

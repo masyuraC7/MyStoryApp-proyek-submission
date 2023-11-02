@@ -35,4 +35,7 @@
     <string name="capture_image">Capture Image</string>
     <string name="switch_camera">Switch Camera</string>
     <string name="input_your_name">Input Your Name</string>
+    <string name="google_maps">Google Maps</string>
+    <string name="title_activity_maps" translatable="false">MapsActivity</string>
+    <string name="try_again">Try Again</string>
 </resources>

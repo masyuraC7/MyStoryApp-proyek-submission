@@ -1,7 +1,10 @@
 package com.mc7.mystoryapp.data.remote.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "story")
 data class StoryItem(
 
     @field:SerializedName("photoUrl")
@@ -17,11 +20,12 @@ data class StoryItem(
     val description: String? = null,
 
     @field:SerializedName("lon")
-    val lon: Any? = null,
+    val lon: Double? = null,
 
+    @PrimaryKey
     @field:SerializedName("id")
-    val id: String? = null,
+    val id: String = "",
 
     @field:SerializedName("lat")
-    val lat: Any? = null
+    val lat: Double? = null
 )

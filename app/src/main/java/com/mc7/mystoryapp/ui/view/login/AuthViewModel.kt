@@ -23,4 +23,10 @@ class AuthViewModel @Inject constructor(
             preferences.saveUserToken(token)
         }
     }
+
+    fun deleteUserToken() {
+        viewModelScope.launch {
+            preferences.deleteUserToken()
+        }
+    }
 }
